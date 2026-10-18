@@ -1,0 +1,206 @@
+/* ==========================================================================
+   Typography — Manrope (English) + Noto Sans Devanagari (Nepali)
+   ========================================================================== */
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  color: var(--c-text);
+  background-color: var(--c-bg);
+}
+
+/* Nepali: Devanagari stack, adjusted rhythm ------------------------------- */
+
+html[lang="ne"] body,
+html[lang="ne"] button,
+html[lang="ne"] input,
+html[lang="ne"] select,
+html[lang="ne"] textarea {
+  font-family: var(--font-deva);
+  line-height: 1.75;
+}
+
+html[lang="ne"] h1,
+html[lang="ne"] h2,
+html[lang="ne"] h3,
+html[lang="ne"] h4 {
+  line-height: 1.34;
+  font-weight: 700;
+}
+
+/* Devanagari must not carry Latin tracking: spacing between glyphs breaks
+   conjuncts (संयुक्ताक्षर) and pushes dependent vowel signs (मात्रा) away from
+   their consonants. Reset tracking on small label typography when Nepali is
+   active. Letter-case is a no-op for Devanagari, so text-transform is kept. */
+html[lang="ne"] .eyebrow,
+html[lang="ne"] .badge,
+html[lang="ne"] .footer-col h3,
+html[lang="ne"] .brand-text small {
+  letter-spacing: 0;
+}
+
+html[lang="ne"] .btn,
+html[lang="ne"] .nav-link {
+  letter-spacing: 0;
+}
+
+/* Headings ---------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+  text-wrap: balance;
+}
+
+.h-hero {
+  font-size: var(--fs-hero);
+  line-height: var(--lh-tight);
+  font-weight: 800;
+}
+
+.h-1 {
+  font-size: var(--fs-3xl);
+  line-height: 1.08;
+  font-weight: 800;
+}
+
+.h-2 {
+  font-size: var(--fs-2xl);
+  font-weight: 750;
+}
+
+.h-3 {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+}
+
+.h-4 {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  letter-spacing: var(--ls-snug);
+}
+
+.h-accent {
+  color: var(--c-primary);
+}
+
+/* Supporting text --------------------------------------------------------- */
+
+.lead {
+  font-size: var(--fs-md);
+  line-height: 1.7;
+  color: var(--c-text-muted);
+  max-width: 60ch;
+}
+
+.muted {
+  color: var(--c-text-muted);
+}
+
+.small {
+  font-size: var(--fs-sm);
+}
+
+.xs {
+  font-size: var(--fs-xs);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-primary);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background-color: currentColor;
+  flex: none;
+}
+
+.eyebrow--plain::before {
+  display: none;
+}
+
+.text-accent {
+  color: var(--c-primary);
+}
+
+/* Editorial prose (legal + long-form pages) ------------------------------- */
+
+.prose {
+  max-width: 68ch;
+}
+
+.prose > * + * {
+  margin-top: 1.1em;
+}
+
+.prose h2 {
+  font-size: var(--fs-lg);
+  margin-top: 2.4em;
+}
+
+.prose h3 {
+  font-size: var(--fs-md);
+  margin-top: 1.9em;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.35rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.prose li {
+  padding-left: 0.35rem;
+}
+
+.prose li::marker {
+  color: var(--c-primary);
+}
+
+.prose a {
+  color: var(--c-primary);
+  font-weight: 600;
+}
+
+.prose strong {
+  font-weight: 700;
+}
+
+/* Links ------------------------------------------------------------------- */
+
+.link {
+  color: var(--c-primary);
+  font-weight: 650;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: gap var(--dur) var(--ease-out), color var(--dur-fast) linear;
+}
+
+.link:hover {
+  color: var(--c-primary-dark);
+  gap: 0.7rem;
+}
+
+.link svg {
+  flex: none;
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" role="img" aria-label="Seasonal vegetables — placeholder illustration">
+  <rect width="640" height="480" fill="#FAFAF6"/>
+  <circle cx="528" cy="92" r="44" fill="#F1F5ED"/>
+  <path d="M0 356 C 108 300 214 332 320 314 C 428 296 540 322 640 350 L640 480 L0 480 Z" fill="#F1F5ED"/>
+  <g transform="translate(320,232)">
+    <ellipse cx="-52" cy="34" rx="40" ry="34" fill="#2D5C20"/>
+    <path d="M-52 -8 q-26 -30 0 -44 q26 14 0 44" fill="#214619"/>
+    <ellipse cx="52" cy="34" rx="40" ry="34" fill="#D8C9A3"/>
+    <path d="M52 -8 q-26 -30 0 -44 q26 14 0 44" fill="#2D5C20"/>
+    <ellipse cx="0" cy="18" rx="30" ry="46" fill="#2D5C20"/>
+    <path d="M0 -28 q-30 -22 -4 -40 q30 12 4 40" fill="#214619"/>
+    <path d="M0 64 v24" stroke="#2D5C20" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <text x="320" y="440" text-anchor="middle" font-family="Manrope, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#666D63">Seasonal vegetables</text>
+</svg>

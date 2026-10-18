@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480" role="img" aria-label="Pig farming — placeholder illustration">
+  <rect width="640" height="480" fill="#FAFAF6"/>
+  <circle cx="528" cy="92" r="44" fill="#F1F5ED"/>
+  <path d="M0 356 C 108 300 214 332 320 314 C 428 296 540 322 640 350 L640 480 L0 480 Z" fill="#F1F5ED"/>
+  <g transform="translate(320,232)">
+    <ellipse cx="6" cy="8" rx="74" ry="46" fill="#2D5C20"/>
+    <circle cx="-62" cy="-2" r="34" fill="#2D5C20"/>
+    <ellipse cx="-95" cy="6" rx="13" ry="17" fill="#F1F5ED"/>
+    <circle cx="-99" cy="3" r="3" fill="#214619"/>
+    <circle cx="-101" cy="12" r="3" fill="#214619"/>
+    <path d="M-80 -30 l6 -26 26 14 z" fill="#214619"/>
+    <path d="M-48 -32 l6 -24 22 16 z" fill="#214619"/>
+    <circle cx="-67" cy="-12" r="4" fill="#214619"/>
+    <rect x="-46" y="44" width="14" height="26" rx="6" fill="#214619"/>
+    <rect x="-4" y="46" width="14" height="24" rx="6" fill="#214619"/>
+    <rect x="34" y="44" width="14" height="26" rx="6" fill="#214619"/>
+    <path d="M76 0 c24 -8 24 24 0 18" fill="none" stroke="#214619" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <text x="320" y="440" text-anchor="middle" font-family="Manrope, system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#666D63">Pig farming</text>
+</svg>

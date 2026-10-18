@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Animations — CSS layer
+   Content is visible by default; GSAP adds motion only when available.
+   ========================================================================== */
+
+/* Perpetual micro-motions (decorative only) -------------------------------- */
+
+.pulse-dot {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--c-primary);
+  flex: none;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -0.28rem;
+  border-radius: 50%;
+  border: 1px solid var(--c-primary);
+  opacity: 0.55;
+  animation: pulse-ring 2.4s var(--ease-soft) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+/* Scroll hint on hero ------------------------------------------------------ */
+
+.scroll-hint {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+.scroll-hint::after {
+  content: "";
+  width: 3.25rem;
+  height: 1px;
+  background-color: var(--c-border-strong);
+  transform-origin: left center;
+  animation: hint-line 2.6s var(--ease-soft) infinite;
+}
+
+@keyframes hint-line {
+  0%,
+  100% {
+    transform: scaleX(0.5);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+}
+
+/* Rotating detail for availability labels ---------------------------------- */
+
+.badge--pulse {
+  animation: badge-breathe 3.2s var(--ease-soft) infinite;
+}
+
+@keyframes badge-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.62;
+  }
+}
+
+/* Smooth anchor offset handled by html scroll-padding-top (reset.css) ------- */
+
+/* Reduced motion ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

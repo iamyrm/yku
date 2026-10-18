@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n-content="meta.feed.title">Animal Feed — Swine, Poultry, Cattle & Goat Feed | Yagya Krishi Udhyog</title>
+  <meta name="description" content="Animal feed supplied by Yagya Krishi Udhyog as a dealer: swine, layer, broiler, cattle and goat feed options with honest availability." data-i18n-content="meta.feed.description">
+  <link rel="canonical" href="https://example.com/animal-feed/">
+  <meta name="theme-color" content="#2D5C20">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Yagya Krishi Udhyog">
+  <meta property="og:title" content="Animal Feed — Swine, Poultry, Cattle & Goat Feed | Yagya Krishi Udhyog" data-i18n-content="meta.feed.title">
+  <meta property="og:description" content="Feed for pigs, poultry, cattle and goats — supplied as a dealer." data-i18n-content="meta.feed.description">
+  <meta property="og:url" content="https://example.com/animal-feed/">
+  <meta property="og:image" content="https://example.com/assets/images/logo/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/images/logo/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-page="feed-index" data-base="../">
+  <a class="skip-link" href="#main-content" data-i18n="a11y.skip">Skip to content</a>
+  <div id="site-header"></div>
+
+  <main id="main-content">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb" data-i18n-aria="a11y.breadcrumb">
+          <ol>
+            <li><a href="../index.html" data-i18n="crumb.home">Home</a></li>
+            <li><span aria-current="page" data-i18n="nav.animal_feed">Animal feed</span></li>
+          </ol>
+        </nav>
+        <div class="page-hero__grid">
+          <div class="page-hero__text">
+            <p class="eyebrow" data-i18n="feed.eyebrow">Animal feed</p>
+            <h1 id="page-title" data-i18n="feed.title">Feed for every stage</h1>
+            <p class="lead" data-i18n="feed.lede">Balanced rations for pig, poultry, cattle and goat farming. We are a dealer of established feed brands — not a manufacturer.</p>
+            <div class="note" role="note"><span data-i18n="notice.dealer">Animal feed is supplied as a dealer/reseller of established brands. This site does not claim manufacture of any feed product.</span></div>
+            <div class="note" role="note"><span data-i18n="notice.price">Prices are not published as this is sample content. Contact us for current rates and stock.</span></div>
+          </div>
+          <figure class="frame frame--43">
+            <img src="../assets/images/animal-feed/feed-bags.svg" alt="Illustration of stacked feed bags" data-i18n-alt="feed.alt" width="640" height="480" decoding="async">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band--green" aria-labelledby="h-categories">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow" data-i18n="feed.categories.eyebrow">Categories</p>
+            <h2 class="h-2" id="h-categories" data-i18n="feed.categories.title">Feed categories</h2>
+            <p class="lead" data-i18n="feed.categories.text">Choose a category to jump to matching products.</p>
+          </div>
+        </header>
+        <div class="cat-grid" id="category-grid" data-catalogue="feed-categories"></div>
+                <noscript><p class="note" data-i18n="noscript.catalogue">This part of the page is loaded with JavaScript. Enable JavaScript to browse it, or contact us directly for the full list.</p></noscript>
+      </div>
+    </section>
+
+    <section class="section band--white band--line" aria-labelledby="h-products" id="products">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow" data-i18n="feed.products.eyebrow">Products</p>
+            <h2 class="h-2" id="h-products" data-i18n="feed.products.title">Sample products</h2>
+          </div>
+        </header>
+        <div class="note" role="note" style="margin-bottom: var(--s-6);"><span data-i18n="notice.catalogue">Catalogue items, availability and images on this page are sample placeholders and do not represent current stock.</span></div>
+
+        <div class="controls" data-controls="feed">
+          <div class="controls__row controls__row--3">
+            <div class="field search-field">
+              <label for="f-search" data-i18n="filters.search">Search</label>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input type="search" id="f-search" name="q" placeholder="Search feed…" data-i18n-ph="filters.feed_ph" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="f-availability" data-i18n="filters.availability">Availability</label>
+              <select id="f-availability" name="availability">
+                <option value="" data-i18n="filters.all">All</option>
+                <option value="available" data-i18n="avail.available">Available</option>
+                <option value="seasonal" data-i18n="avail.seasonal">Seasonal</option>
+                <option value="coming_soon" data-i18n="avail.coming_soon">Coming soon</option>
+                <option value="unavailable" data-i18n="avail.unavailable">Currently unavailable</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-sort" data-i18n="filters.sort">Sort by</label>
+              <select id="f-sort" name="sort">
+                <option value="featured" data-i18n="filters.sort_featured">Default</option>
+                <option value="az" data-i18n="filters.sort_az">Name (A–Z)</option>
+                <option value="za" data-i18n="filters.sort_za">Name (Z–A)</option>
+              </select>
+            </div>
+          </div>
+          <div class="controls__status">
+            <div class="chip-row" role="group" aria-label="Feed category filter" data-i18n-aria="feed.filter_aria" id="feed-chips" data-chips="feed-category"></div>
+            <p id="f-results" aria-live="polite" data-i18n="filters.results_all">All items</p>
+          </div>
+        </div>
+
+        <div class="grid grid--3" id="catalogue-grid" data-catalogue="feed-products"></div>
+                <noscript><p class="note" data-i18n="noscript.catalogue">This part of the page is loaded with JavaScript. Enable JavaScript to browse it, or contact us directly for the full list.</p></noscript>
+
+        <div class="empty-state" id="empty-state" aria-live="polite">
+          <h3 data-i18n="empty.title">No matches found</h3>
+          <p data-i18n="empty.text">Try a different search term or clear the filters.</p>
+          <p><button class="btn btn--ghost" type="button" id="clear-filters" data-i18n="empty.clear">Clear filters</button></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="h-choose">
+      <div class="container split split--top">
+        <div>
+          <p class="eyebrow" data-i18n="feed.choose.eyebrow">Choosing feed</p>
+          <h2 class="h-2" id="h-choose" data-i18n="feed.choose.title">Match feed to stage, not to habit</h2>
+        </div>
+        <div>
+          <p data-i18n="feed.choose.p1">Starter, grower and finisher rations exist for a reason: protein and energy needs change as animals age. Feeding the wrong stage ration is one of the costliest habits on a farm.</p>
+          <p data-i18n="feed.choose.p2">Tell us your animal type, age and target — we will suggest a practical ration and daily quantity, then confirm current brand options and price.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="h-cta">
+      <div class="container section cta-band__grid">
+        <div>
+          <p class="eyebrow" data-i18n="home.cta.eyebrow">Get in touch</p>
+          <h2 class="h-2" id="h-cta" data-i18n="feed.cta.title">Need a feed plan for your farm?</h2>
+          <p class="lead" data-i18n="home.cta.text">Send your requirement — animal type, feed or crop, quantity and location — and we will get back to you.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary" href="../contact/index.html" data-i18n="home.cta.btn1">Send an enquiry</a>
+          <a class="btn btn--outline" href="https://wa.me/9779804331857" target="_blank" rel="noopener" data-wa-link data-i18n="home.cta.btn2">WhatsApp us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="../data/config.js" defer></script>
+  <script src="../data/translations.js" defer></script>
+  <script src="../data/livestock.js" defer></script>
+  <script src="../data/animal-feed.js" defer></script>
+  <script src="../data/crops.js" defer></script>
+  <script src="../js/i18n.js" defer></script>
+  <script src="../js/navigation.js" defer></script>
+  <script src="../js/catalogue.js" defer></script>
+  <script src="../js/filters.js" defer></script>
+  <script src="../js/contact.js" defer></script>
+  <script src="../js/gallery.js" defer></script>
+  <script src="../js/animations.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

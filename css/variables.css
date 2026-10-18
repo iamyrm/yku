@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Yagya Krishi Udhyog — Design tokens
+   Single source of truth for colour, type, spacing, radius, motion.
+   ========================================================================== */
+
+:root {
+  /* Brand colour system -------------------------------------------------- */
+  --c-primary: #2d5c20;
+  --c-primary-dark: #214619;
+  --c-primary-soft: #e7eee1;
+  --c-surface-green: #f1f5ed;
+  --c-bg: #fafaf6;
+  --c-white: #ffffff;
+  --c-text: #20251f;
+  --c-text-muted: #666d63;
+  --c-border: #e1e5dc;
+  --c-border-strong: #cfd6c8;
+  --c-focus: #2d5c20;
+  --c-error: #9c3521;
+  --c-error-surface: #fbeeec;
+
+  /* Typography ------------------------------------------------------------ */
+  --font-sans: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-deva: "Noto Sans Devanagari", "Mangal", "Nirmala UI", sans-serif;
+  --font-mono: "SFMono-Regular", "Cascadia Mono", "Consolas", monospace;
+
+  --fs-eyebrow: 0.75rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-md: 1.125rem;
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --fs-2xl: clamp(1.85rem, 1.5rem + 1.6vw, 2.75rem);
+  --fs-3xl: clamp(2.25rem, 1.75rem + 2.4vw, 3.75rem);
+  --fs-hero: clamp(2.5rem, 1.9rem + 3.2vw, 4.5rem);
+
+  --lh-tight: 1.06;
+  --lh-heading: 1.16;
+  --lh-body: 1.65;
+  --ls-tight: -0.03em;
+  --ls-snug: -0.015em;
+
+  /* Spacing scale (4px base) --------------------------------------------- */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 2.5rem;
+  --s-8: 3rem;
+  --s-9: 4rem;
+  --s-10: 5rem;
+  --s-11: 6.5rem;
+  --s-12: 8rem;
+
+  --section-y: clamp(3.5rem, 2rem + 6vw, 7rem);
+  --gutter: clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
+  --container-w: 1280px;
+  --container-wide: 1440px;
+
+  /* Shape ----------------------------------------------------------------- */
+  --r-xs: 3px;
+  --r-sm: 5px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-img: 6px;
+
+  /* Elevation (tinted, never neon) ---------------------------------------- */
+  --shadow-soft: 0 24px 48px -28px rgba(32, 37, 31, 0.22);
+  --shadow-panel: 0 16px 40px -24px rgba(33, 70, 25, 0.28);
+  --shadow-header: 0 10px 30px -22px rgba(32, 37, 31, 0.35);
+
+  /* Motion ---------------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --dur-fast: 160ms;
+  --dur: 280ms;
+  --dur-slow: 480ms;
+
+  /* Layout ---------------------------------------------------------------- */
+  --header-h: 4.75rem;
+  --z-header: 60;
+  --z-drawer: 70;
+  --z-lightbox: 90;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 5.25rem;
+  }
+}
