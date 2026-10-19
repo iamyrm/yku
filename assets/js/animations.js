@@ -19,7 +19,7 @@
     try {
       var instance = new window.LocomotiveScroll({
         el: container,
-        smooth: true,
+        smooth: false,
         multiplier: 1,
         smartphone: { smooth: false },
         tablet: { smooth: false },
