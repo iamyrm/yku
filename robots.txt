@@ -1,21 +1,4 @@
-# Yagya Krishi Udhyog — robots.txt
-# Replace the example domain below with the real production origin before deploying.
-
 User-agent: *
-Allow: /
-Disallow: /404.html
-
-# AI / answer-engine crawlers — allowed by default so the site can be cited.
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://example.com/sitemap.xml

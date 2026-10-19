@@ -1,0 +1,10 @@
+/* Search page */
+.search-form{display:flex;gap:var(--s-3);align-items:center;margin-top:var(--s-5);border:1px solid var(--c-border);border-radius:var(--r-sm);padding:var(--s-2) var(--s-3);background:var(--c-white);max-width:640px;}
+.search-form input{flex:1;border:none;outline:none;font-size:var(--fs-base);}
+.search-results{display:grid;gap:var(--s-3);margin-top:var(--s-5);}
+.search-result a{display:flex;flex-direction:column;gap:0.25rem;padding:var(--s-3);border:1px solid var(--c-border);border-radius:var(--r-sm);text-decoration:none;color:inherit;background:var(--c-white);}
+.search-result a:hover{box-shadow:var(--shadow-soft);border-color:var(--c-border-strong);}
+.search-result__title{font-weight:750;}
+.search-result__section{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:0.08em;color:var(--c-text-muted);}
+.search-empty{color:var(--c-text-muted);margin-top:var(--s-4);}
+.search-result mark{background:var(--c-primary-soft);color:inherit;padding:0 0.12em;border-radius:2px;}

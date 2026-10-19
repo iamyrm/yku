@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Cookie consent — fixed bar at the bottom of the viewport.
+   Sits outside the Locomotive scroll container so it never moves.
+   ========================================================================== */
+
+.cookie-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  background-color: var(--c-white);
+  border-top: 1px solid var(--c-border);
+  box-shadow: 0 -12px 32px rgba(23, 44, 18, 0.12);
+  transform: translateY(110%);
+  transition: transform 0.45s var(--ease-out);
+}
+
+.cookie-bar.is-visible {
+  transform: translateY(0);
+}
+
+.cookie-bar__inner {
+  display: grid;
+  gap: var(--s-4);
+  align-items: center;
+  padding-block: var(--s-4);
+}
+
+.cookie-bar__text {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+  max-width: 78ch;
+}
+
+.cookie-bar__text strong {
+  color: var(--c-text);
+}
+
+.cookie-bar__text a {
+  color: var(--c-primary);
+  font-weight: 650;
+}
+
+.cookie-bar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+
+@media (min-width: 768px) {
+  .cookie-bar__inner {
+    grid-template-columns: 1fr auto;
+    gap: var(--s-6);
+  }
+
+  .cookie-bar__actions {
+    justify-content: flex-end;
+  }
+}
