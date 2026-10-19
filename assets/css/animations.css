@@ -29,10 +29,12 @@
     transform: scale(0.75);
     opacity: 0.6;
   }
+
   70% {
     transform: scale(1.35);
     opacity: 0;
   }
+
   100% {
     transform: scale(1.35);
     opacity: 0;
@@ -62,10 +64,12 @@
 }
 
 @keyframes hint-line {
+
   0%,
   100% {
     transform: scaleX(0.5);
   }
+
   50% {
     transform: scaleX(1);
   }
@@ -78,10 +82,12 @@
 }
 
 @keyframes badge-breathe {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.62;
   }

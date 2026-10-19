@@ -138,7 +138,7 @@
 }
 
 /* Meta and share sit in one row under the feature image. */
-.post-hero__media + .post-hero__foot {
+.post-hero__media+.post-hero__foot {
   margin-top: var(--s-5);
 }
 
@@ -161,7 +161,7 @@
   max-width: 960px;
 }
 
-.post-body > * + * {
+.post-body>*+* {
   margin-top: 1.15em;
 }
 
