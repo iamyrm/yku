@@ -12,11 +12,48 @@
     return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
   }
 
+  function normalize(value) {
+    return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').replace(/^\s+|\s+$/g, '');
+  }
+
+  function chipValues(kind) {
+    var host = document.querySelector('[data-chips="' + kind + '"]');
+    if (!host) return [];
+    var buttons = host.querySelectorAll('.chip');
+    var out = [];
+    for (var i = 0; i < buttons.length; i++) {
+      var value = buttons[i].getAttribute('data-value');
+      if (value) out.push(value);
+    }
+    return out;
+  }
+
+  /* Menu links use short slugs (?category=pig) while the chips and cards use
+     full labels ("Pig Feed"). Resolve the slug to the matching chip value so
+     arriving from the menu never lands on an empty listing. */
+  function resolveCategory(value) {
+    if (!value) return '';
+    var hosts = document.querySelectorAll('[data-chips]');
+    var values = [];
+    for (var i = 0; i < hosts.length; i++) {
+      var kind = hosts[i].getAttribute('data-chips');
+      if (kind === 'season') continue;
+      values = values.concat(chipValues(kind));
+    }
+    if (values.indexOf(value) !== -1) return value;
+    var needle = normalize(value);
+    for (var j = 0; j < values.length; j++) {
+      var key = normalize(values[j]);
+      if (key === needle || key.indexOf(needle) !== -1 || needle.indexOf(key) !== -1) return values[j];
+    }
+    return value;
+  }
+
   function readURL() {
     var params = new URLSearchParams(location.search);
     state.q = params.get('q') || '';
     state.sort = params.get('sort') || 'featured';
-    state.category = params.get('category') || '';
+    state.category = resolveCategory(params.get('category') || '');
     state.availability = params.get('availability') || '';
     state.season = params.get('season') || '';
     if (els.search) els.search.value = state.q;
@@ -100,10 +137,16 @@
       el.style.display = ok ? '' : 'none';
       if (ok) shown++;
     }
+    var active = !!(q || state.category || state.availability || state.season);
     if (els.results) {
-      var active = !!(state.q || state.category || state.availability || state.season);
       els.results.textContent = active ? ('Showing ' + shown + ' of ' + total) : ('' + total + ' items');
     }
+    if (els.count) {
+      var count = (q ? 1 : 0) + (state.category ? 1 : 0) + (state.availability ? 1 : 0) + (state.season ? 1 : 0);
+      els.count.textContent = String(count);
+      els.count.hidden = count === 0;
+    }
+    if (els.clear) els.clear.hidden = !active;
     if (els.empty) els.empty.classList.toggle('is-visible', shown === 0);
     syncURL();
   }
@@ -157,10 +200,15 @@
     els.results = document.getElementById('f-results');
     els.empty = document.getElementById('empty-state');
     els.clear = document.getElementById('clear-filters');
+    els.accordion = controls.querySelector('[data-controls-accordion]');
+    els.count = controls.querySelector('[data-filter-count]');
     if (els.grid) {
       originalOrder = Array.prototype.slice.call(els.grid.querySelectorAll('[data-card]'));
     }
     readURL();
+    if (els.accordion && (state.q || state.category || state.availability || state.season || (state.sort && state.sort !== 'featured'))) {
+      els.accordion.open = true;
+    }
     syncChipStates();
     wire();
     apply();

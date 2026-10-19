@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://example.com/animal-feed.html">
   
   <meta name="twitter:card" content="summary">
-  <link rel="icon" type="image/png" href="assets/images/logo/logo.png">
+  <link rel="icon" type="image/png" href="assets/images/logo/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -70,8 +70,7 @@
       </ul>
     </nav>
     <div class="header-actions">
-      <a class="btn btn--ghost btn--sm" href="search.html" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></a>
-      <a class="btn btn--outline btn--sm header-whatsapp" href="https://wa.me/9779804331857" target="_blank" rel="noopener" data-wa-link>WhatsApp Enquiry</a>
+      <button class="btn btn--ghost btn--sm" type="button" aria-label="Search" data-search-open><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></button>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Open menu" data-open-label="Open menu" data-close-label="Close menu">
         <svg class="menu-toggle__open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         <svg class="menu-toggle__close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -109,7 +108,7 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="search.html">Search</a></li>
+        <li><button type="button" data-search-open>Search</button></li>
       </ul>
       <div class="mobile-drawer__actions">
         <a class="btn btn--primary" href="contact.html">Contact Us</a>
@@ -118,155 +117,235 @@
       </div>
     </div>
   </div>
+
+  <div class="search-popup" id="search-popup" role="dialog" aria-modal="true" aria-labelledby="search-popup-title" hidden>
+    <div class="search-popup__backdrop" data-search-close></div>
+    <div class="search-popup__panel" role="document">
+      <div class="search-popup__head">
+        <h2 class="h-4" id="search-popup-title">Search the site</h2>
+        <button class="search-popup__close" type="button" aria-label="Close search" data-search-close>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <form class="search-popup__form" role="search" action="search.html" method="get">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input class="search-popup__input" type="search" name="q" id="search-popup-input" placeholder="Search livestock, feed, crops…" autocomplete="off" aria-label="Search the site">
+        <button class="btn btn--primary btn--sm" type="submit">Search</button>
+      </form>
+      <div class="search-popup__results" id="search-popup-results" aria-live="polite"></div>
+      <p class="search-popup__hint">Press Enter to see all results.</p>
+    </div>
+  </div>
 </header>
 
 <div data-scroll-container>
   <main id="main">
 
-    <section class="page-hero">
+    <section class="page-hero" aria-labelledby="page-title">
       <div class="container">
         <div class="page-hero__grid">
           <div class="page-hero__text">
             
-      <div class="section-head" data-animate="heading"><div><p class="eyebrow">Animal feed</p><h2>Feed for every stage</h2></div><p class="lead">Balanced rations for pig, poultry, cattle and goat farming. We are a dealer of established feed brands — not a manufacturer.</p></div>
+      <p class="eyebrow">Animal feed</p>
+            <h1 id="page-title">Feed for every stage</h1>
+            <p class="lead">Balanced rations for pig, poultry, cattle and goat farming. We are a dealer of established feed brands — not a manufacturer.</p>
           </div>
         </div>
       </div>
     </section>
-    <section class="band" aria-label="Animal feed">
+    <section class="section band--white" aria-label="Animal feed">
       <div class="container">
         
     <div class="controls" data-controls>
-      <div class="controls__row controls__row--2-3">
-        <div class="field search-field">
-          <label for="f-search">Search</label>
-          <input id="f-search" type="search" placeholder="Search feed…" autocomplete="off">
+      <details class="controls__accordion" data-controls-accordion>
+        <summary class="controls__summary">
+          <span class="controls__summary-title">
+            <svg class="controls__summary-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            Filters &amp; sort
+            <span class="controls__count" data-filter-count hidden>0</span>
+          </span>
+          <span class="controls__summary-meta">
+            <span id="f-results" aria-live="polite">9 items</span>
+            <svg class="controls__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </summary>
+        <div class="controls__body">
+          <div class="controls__row controls__row--3">
+            <div class="field search-field">
+              <label for="f-search">Search</label>
+              <input id="f-search" type="search" placeholder="Search feed…" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="f-availability">Availability</label>
+              <select id="f-availability">
+                <option value="">All</option>
+                <option value="available">Available</option>
+                <option value="seasonal">Seasonal</option>
+                <option value="coming_soon">Coming soon</option>
+                <option value="unavailable">Currently unavailable</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-sort">Sort by</label>
+              <select id="f-sort">
+                <option value="featured">Default</option>
+                <option value="az">Name (A–Z)</option>
+                <option value="za">Name (Z–A)</option>
+              </select>
+            </div>
+          </div>
+          <div class="controls__status">
+            <div class="controls__chips">
+              <div class="chip-row" data-chips="feed-category">
+                <button class="chip" type="button" data-value="" aria-pressed="true">All</button>
+                <button class="chip" type="button" data-value="Pig Feed" aria-pressed="false">Pig Feed</button>
+                <button class="chip" type="button" data-value="Cattle and Buffalo Feed" aria-pressed="false">Cattle and Buffalo Feed</button>
+                <button class="chip" type="button" data-value="Poultry Feed" aria-pressed="false">Poultry Feed</button>
+                <button class="chip" type="button" data-value="Goat Feed" aria-pressed="false">Goat Feed</button>
+                <button class="chip" type="button" data-value="Other Feed Products" aria-pressed="false">Other Feed Products</button>
+              </div>
+            </div>
+            <div class="controls__meta">
+              <button class="btn btn--ghost btn--sm" type="button" id="clear-filters" hidden>Clear filters</button>
+            </div>
+          </div>
         </div>
-        <div class="field">
-          <label for="f-category">Category</label>
-          <select id="f-category">
-            <option value="">All</option>
-            <option value="Pig Feed">Pig Feed</option>
-            <option value="Cattle and Buffalo Feed">Cattle and Buffalo Feed</option>
-            <option value="Poultry Feed">Poultry Feed</option>
-            <option value="Goat Feed">Goat Feed</option>
-            <option value="Other Feed Products">Other Feed Products</option>
-          </select>
-        </div>
-      </div>
-      <div class="chip-row" data-chips="feed-category">
-        <button class="chip" type="button" data-value="" aria-pressed="true">All</button>
-        <button class="chip" type="button" data-value="Pig Feed" aria-pressed="false">Pig Feed</button>
-        <button class="chip" type="button" data-value="Cattle and Buffalo Feed" aria-pressed="false">Cattle and Buffalo Feed</button>
-        <button class="chip" type="button" data-value="Poultry Feed" aria-pressed="false">Poultry Feed</button>
-        <button class="chip" type="button" data-value="Goat Feed" aria-pressed="false">Goat Feed</button>
-        <button class="chip" type="button" data-value="Other Feed Products" aria-pressed="false">Other Feed Products</button>
-      </div>
-      <div class="controls__row controls__row--2-3">
-        <div class="field">
-          <label for="f-availability">Availability</label>
-          <select id="f-availability">
-            <option value="">All</option>
-            <option value="available">Available</option>
-            <option value="seasonal">Seasonal</option>
-            <option value="coming_soon">Coming soon</option>
-            <option value="unavailable">Currently unavailable</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-sort">Sort by</label>
-          <select id="f-sort">
-            <option value="featured">Default</option>
-            <option value="az">Name (A–Z)</option>
-            <option value="za">Name (Z–A)</option>
-          </select>
-        </div>
-      </div>
-      <div class="controls__status">
-        <p id="f-results" aria-live="polite">Showing 9 of 9</p>
-        <button class="btn btn--ghost btn--small" type="button" id="clear-filters">Clear filters</button>
-      </div>
+      </details>
     </div>
         <div class="cat-grid" id="catalogue-grid" data-animate="cards">
       <article class="cat-item" data-card data-name="Pig Feed — Grower Mash" data-category="Pig Feed Mash feed animal feed" data-category-key="Pig Feed" data-availability="available" data-meta="Mash feed Pig Feed">
-        <img class="cat-item__media" src="assets/images/photos/feed-pig.jpg" srcset="assets/images/photos/feed-pig-card.jpg 480w, assets/images/photos/feed-pig.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Pig Feed — Grower Mash" loading="lazy" decoding="async">
+        <a class="cat-item__media" href="feed-pig-grower-mash.html">
+          <span class="cat-item__badge"><span class="badge badge--available">Available</span></span>
+          <img src="assets/images/photos/feed-pig.jpg" srcset="assets/images/photos/feed-pig-card.jpg 480w, assets/images/photos/feed-pig.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Pig Feed — Grower Mash" loading="lazy" decoding="async">
+        </a>
         <div class="cat-item__body">
-          <div class="cat-item__meta"><span class="tag">Mash feed</span><span class="tag">Pig Feed</span><span class="badge badge--available">Available</span></div>
+          <p class="cat-item__meta"><span>Mash feed</span></p>
           <h3 class="cat-item__title"><a class="link" href="feed-pig-grower-mash.html">Pig Feed — Grower Mash</a></h3>
           <p class="cat-item__desc">A mash-type pig feed offered through our feed distribution service. Sourced from a wholesaler and supplied to farmers and farms — this listing is a…</p>
-          <div class="cat-item__actions"><a class="btn btn--ghost btn--small" href="feed-pig-grower-mash.html">View details</a></div>
+          <div class="cat-item__actions">
+            <a class="btn btn--ghost btn--sm" href="feed-pig-grower-mash.html">View details</a>
+            <a class="link" href="contact.html">Enquire</a>
+          </div>
         </div>
       </article>
       <article class="cat-item" data-card data-name="Pig Feed — Fattening Pellets" data-category="Pig Feed Pellet feed animal feed" data-category-key="Pig Feed" data-availability="seasonal" data-meta="Pellet feed Pig Feed">
-        <img class="cat-item__media" src="assets/images/photos/feed-pig.jpg" srcset="assets/images/photos/feed-pig-card.jpg 480w, assets/images/photos/feed-pig.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Pig Feed — Fattening Pellets" loading="lazy" decoding="async">
+        <a class="cat-item__media" href="feed-pig-finisher-pellets.html">
+          <span class="cat-item__badge"><span class="badge badge--seasonal">Seasonal</span></span>
+          <img src="assets/images/photos/feed-pig.jpg" srcset="assets/images/photos/feed-pig-card.jpg 480w, assets/images/photos/feed-pig.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Pig Feed — Fattening Pellets" loading="lazy" decoding="async">
+        </a>
         <div class="cat-item__body">
-          <div class="cat-item__meta"><span class="tag">Pellet feed</span><span class="tag">Pig Feed</span><span class="badge badge--seasonal">Seasonal</span></div>
+          <p class="cat-item__meta"><span>Pellet feed</span></p>
           <h3 class="cat-item__title"><a class="link" href="feed-pig-finisher-pellets.html">Pig Feed — Fattening Pellets</a></h3>
           <p class="cat-item__desc">A pellet-form pig feed used in the later feeding stage, supplied through our wholesale purchase and resale channel. This is sample catalogue content…</p>
-          <div class="cat-item__actions"><a class="btn btn--ghost btn--small" href="feed-pig-finisher-pellets.html">View details</a></div>
+          <div class="cat-item__actions">
+            <a class="btn btn--ghost btn--sm" href="feed-pig-finisher-pellets.html">View details</a>
+            <a class="link" href="contact.html">Enquire</a>
+          </div>
         </div>
       </article>
       <article class="cat-item" data-card data-name="Cattle &amp; Buffalo Feed — Concentrate Mix" data-category="Cattle and Buffalo Feed Concentrate mix animal feed" data-category-key="Cattle and Buffalo Feed" data-availability="available" data-meta="Concentrate mix Cattle and Buffalo Feed">
-        <img class="cat-item__media" src="assets/images/photos/feed-cattle.jpg" srcset="assets/images/photos/feed-cattle-card.jpg 480w, assets/images/photos/feed-cattle.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Cattle &amp; Buffalo Feed — Concentrate Mix" loading="lazy" decoding="async">
+        <a class="cat-item__media" href="feed-cattle-concentrate-mix.html">
+          <span class="cat-item__badge"><span class="badge badge--available">Available</span></span>
+          <img src="assets/images/photos/feed-cattle.jpg" srcset="assets/images/photos/feed-cattle-card.jpg 480w, assets/images/photos/feed-cattle.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Cattle &amp; Buffalo Feed — Concentrate Mix" loading="lazy" decoding="async">
+        </a>
         <div class="cat-item__body">
-          <div class="cat-item__meta"><span class="tag">Concentrate mix</span><span class="tag">Cattle and Buffalo Feed</span><span class="badge badge--available">Available</span></div>
+          <p class="cat-item__meta"><span>Concentrate mix</span></p>
           <h3 class="cat-item__title"><a class="link" href="feed-cattle-concentrate-mix.html">Cattle &amp; Buffalo Feed — Concentrate Mix</a></h3>
           <p class="cat-item__desc">A concentrate feed mix for cows and buffaloes, part of the feed range we purchase from wholesalers and supply to local farmers. This sample listing…</p>
-          <div class="cat-item__actions"><a class="btn btn--ghost btn--small" href="feed-cattle-concentrate-mix.html">View details</a></div>
+          <div class="cat-item__actions">
+            <a class="btn btn--ghost btn--sm" href="feed-cattle-concentrate-mix.html">View details</a>
+            <a class="link" href="contact.html">Enquire</a>
+          </div>
         </div>
       </article>
       <article class="cat-item" data-card data-name="Cattle Feed — Dairy Ration Mix" data-category="Cattle and Buffalo Feed Mixed ration animal feed" data-category-key="Cattle and Buffalo Feed" data-availability="seasonal" data-meta="Mixed ration Cattle and Buffalo Feed">
-        <img class="cat-item__media" src="assets/images/photos/feed-cattle.jpg" srcset="assets/images/photos/feed-cattle-card.jpg 480w, assets/images/photos/feed-cattle.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Cattle Feed — Dairy Ration Mix" loading="lazy" decoding="async">
+        <a class="cat-item__media" href="feed-cattle-dairy-ration.html">
+          <span class="cat-item__badge"><span class="badge badge--seasonal">Seasonal</span></span>
+          <img src="assets/images/photos/feed-cattle.jpg" srcset="assets/images/photos/feed-cattle-card.jpg 480w, assets/images/photos/feed-cattle.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Cattle Feed — Dairy Ration Mix" loading="lazy" decoding="async">
+        </a>
         <div class="cat-item__body">
-          <div class="cat-item__meta"><span class="tag">Mixed ration</span><span class="tag">Cattle and Buffalo Feed</span><span class="badge badge--seasonal">Seasonal</span></div>
+          <p class="cat-item__meta"><span>Mixed ration</span></p>
           <h3 class="cat-item__title"><a class="link" href="feed-cattle-dairy-ration.html">Cattle Feed — Dairy Ration Mix</a></h3>
           <p class="cat-item__desc">A mixed ration feed for dairy cattle, resold by Yagya Krishi Udhyog through its feed dealership. Sample entry: exact brand, composition, pack size…</p>
-          <div class="cat-item__actions"><a class="btn btn--ghost btn--small" href="feed-cattle-dairy-ration.html">View details</a></div>
+          <div class="cat-item__actions">
+            <a class="btn btn--ghost btn--sm" href="feed-cattle-dairy-ration.html">View details</a>
+            <a class="link" href="contact.html">Enquire</a>
+          </div>
         </div>
       </article>
       <article class="cat-item" data-card data-name="Poultry Feed — Layer Mash" data-category="Poultry Feed Mash feed animal feed" data-category-key="Poultry Feed" data-availability="available" data-meta="Mash feed Poultry Feed">
-        <img class="cat-item__media" src="assets/images/photos/feed-poultry.jpg" srcset="assets/images/photos/feed-poultry-card.jpg 480w, assets/images/photos/feed-poultry.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Poultry Feed — Layer Mash" loading="lazy" decoding="async">
+        <a class="cat-item__media" href="feed-poultry-layer-mash.html">
+          <span class="cat-item__badge"><span class="badge badge--available">Available</span></span>
+          <img src="assets/images/photos/feed-poultry.jpg" srcset="assets/images/photos/feed-poultry-card.jpg 480w, assets/images/photos/feed-poultry.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Poultry Feed — Layer Mash" loading="lazy" decoding="async">
+        </a>
         <div class="cat-item__body">
-          <div class="cat-item__meta"><span class="tag">Mash feed</span><span class="tag">Poultry Feed</span><span class="badge badge--available">Available</span></div>
+          <p class="cat-item__meta"><span>Mash feed</span></p>
           <h3 class="cat-item__title"><a class="link" href="feed-poultry-layer-mash.html">Poultry Feed — Layer Mash</a></h3>
           <p class="cat-item__desc">Layer mash for laying hens, one of the poultry feed lines we stock through wholesale purchase. This is sample catalogue content; brand, pack size and…</p>
-          <div class="cat-item__actions"><a class="btn btn--ghost btn--small" href="feed-poultry-layer-mash.html">View details</a></div>
+          <div class="cat-item__actions">
+            <a class="btn btn--ghost btn--sm" href="feed-poultry-layer-mash.html">View details</a>
+            <a class="link" href="contact.html">Enquire</a>
+          </div>
         </div>
       </article>
       <article class="cat-item" data-card data-name="Poultry Feed — Starter Crumble" data-category="Poultry Feed Crumble feed animal feed" data-category-key="Poultry Feed" data-availability="available" data-meta="Crumble feed Poultry Feed">
-        <img class="cat-item__media" src="assets/images/photos/feed-poultry.jpg" srcset="assets/images/photos/feed-poultry-card.jpg 480w, assets/images/photos/feed-poultry.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Poultry Feed — Starter Crumble" loading="lazy" decoding="async">
+        <a class="cat-item__media" href="feed-poultry-starter-crumble.html">
+          <span class="cat-item__badge"><span class="badge badge--available">Available</span></span>
+          <img src="assets/images/photos/feed-poultry.jpg" srcset="assets/images/photos/feed-poultry-card.jpg 480w, assets/images/photos/feed-poultry.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Poultry Feed — Starter Crumble" loading="lazy" decoding="async">
+        </a>
         <div class="cat-item__body">
-          <div class="cat-item__meta"><span class="tag">Crumble feed</span><span class="tag">Poultry Feed</span><span class="badge badge--available">Available</span></div>
+          <p class="cat-item__meta"><span>Crumble feed</span></p>
           <h3 class="cat-item__title"><a class="link" href="feed-poultry-starter-crumble.html">Poultry Feed — Starter Crumble</a></h3>
           <p class="cat-item__desc">Starter crumble feed for young birds, distributed by Yagya Krishi Udhyog from wholesale stock. Sample listing — confirm brand, package size and price…</p>
-          <div class="cat-item__actions"><a class="btn btn--ghost btn--small" href="feed-poultry-starter-crumble.html">View details</a></div>
+          <div class="cat-item__actions">
+            <a class="btn btn--ghost btn--sm" href="feed-poultry-starter-crumble.html">View details</a>
+            <a class="link" href="contact.html">Enquire</a>
+          </div>
         </div>
       </article>
       <article class="cat-item" data-card data-name="Goat Feed — Mixture" data-category="Goat Feed Mixed feed animal feed" data-category-key="Goat Feed" data-availability="coming_soon" data-meta="Mixed feed Goat Feed">
-        <img class="cat-item__media" src="assets/images/photos/feed-goat.jpg" srcset="assets/images/photos/feed-goat-card.jpg 480w, assets/images/photos/feed-goat.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Goat Feed — Mixture" loading="lazy" decoding="async">
+        <a class="cat-item__media" href="feed-goat-mixture.html">
+          <span class="cat-item__badge"><span class="badge badge--coming_soon">Coming soon</span></span>
+          <img src="assets/images/photos/feed-goat.jpg" srcset="assets/images/photos/feed-goat-card.jpg 480w, assets/images/photos/feed-goat.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Goat Feed — Mixture" loading="lazy" decoding="async">
+        </a>
         <div class="cat-item__body">
-          <div class="cat-item__meta"><span class="tag">Mixed feed</span><span class="tag">Goat Feed</span><span class="badge badge--coming_soon">Coming soon</span></div>
+          <p class="cat-item__meta"><span>Mixed feed</span></p>
           <h3 class="cat-item__title"><a class="link" href="feed-goat-mixture.html">Goat Feed — Mixture</a></h3>
           <p class="cat-item__desc">A mixed goat feed added to our catalogue as distribution expands. This sample entry will be updated with real brand, packaging and pricing…</p>
-          <div class="cat-item__actions"><a class="btn btn--ghost btn--small" href="feed-goat-mixture.html">View details</a></div>
+          <div class="cat-item__actions">
+            <a class="btn btn--ghost btn--sm" href="feed-goat-mixture.html">View details</a>
+            <a class="link" href="contact.html">Enquire</a>
+          </div>
         </div>
       </article>
       <article class="cat-item" data-card data-name="Goat Feed — Pellets" data-category="Goat Feed Pellet feed animal feed" data-category-key="Goat Feed" data-availability="unavailable" data-meta="Pellet feed Goat Feed">
-        <img class="cat-item__media" src="assets/images/photos/feed-goat.jpg" srcset="assets/images/photos/feed-goat-card.jpg 480w, assets/images/photos/feed-goat.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Goat Feed — Pellets" loading="lazy" decoding="async">
+        <a class="cat-item__media" href="feed-goat-pellets.html">
+          <span class="cat-item__badge"><span class="badge badge--unavailable">Currently unavailable</span></span>
+          <img src="assets/images/photos/feed-goat.jpg" srcset="assets/images/photos/feed-goat-card.jpg 480w, assets/images/photos/feed-goat.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Goat Feed — Pellets" loading="lazy" decoding="async">
+        </a>
         <div class="cat-item__body">
-          <div class="cat-item__meta"><span class="tag">Pellet feed</span><span class="tag">Goat Feed</span><span class="badge badge--unavailable">Currently unavailable</span></div>
+          <p class="cat-item__meta"><span>Pellet feed</span></p>
           <h3 class="cat-item__title"><a class="link" href="feed-goat-pellets.html">Goat Feed — Pellets</a></h3>
           <p class="cat-item__desc">Pellet-form goat feed listed as part of the catalogue expansion. Sample content only — contact the farm to ask whether this product is currently…</p>
-          <div class="cat-item__actions"><a class="btn btn--ghost btn--small" href="feed-goat-pellets.html">View details</a></div>
+          <div class="cat-item__actions">
+            <a class="btn btn--ghost btn--sm" href="feed-goat-pellets.html">View details</a>
+            <a class="link" href="contact.html">Enquire</a>
+          </div>
         </div>
       </article>
       <article class="cat-item" data-card data-name="Mineral Mixture for Livestock" data-category="Other Feed Products Supplement animal feed" data-category-key="Other Feed Products" data-availability="seasonal" data-meta="Supplement Other Feed Products">
-        <img class="cat-item__media" src="assets/images/photos/feed-other.jpg" srcset="assets/images/photos/feed-other-card.jpg 480w, assets/images/photos/feed-other.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Mineral Mixture for Livestock" loading="lazy" decoding="async">
+        <a class="cat-item__media" href="feed-livestock-mineral-mixture.html">
+          <span class="cat-item__badge"><span class="badge badge--seasonal">Seasonal</span></span>
+          <img src="assets/images/photos/feed-other.jpg" srcset="assets/images/photos/feed-other-card.jpg 480w, assets/images/photos/feed-other.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Mineral Mixture for Livestock" loading="lazy" decoding="async">
+        </a>
         <div class="cat-item__body">
-          <div class="cat-item__meta"><span class="tag">Supplement</span><span class="tag">Other Feed Products</span><span class="badge badge--seasonal">Seasonal</span></div>
+          <p class="cat-item__meta"><span>Supplement</span></p>
           <h3 class="cat-item__title"><a class="link" href="feed-livestock-mineral-mixture.html">Mineral Mixture for Livestock</a></h3>
           <p class="cat-item__desc">A mineral supplement distributed alongside our regular feed range. This placeholder entry demonstrates how additional feed products will appear as…</p>
-          <div class="cat-item__actions"><a class="btn btn--ghost btn--small" href="feed-livestock-mineral-mixture.html">View details</a></div>
+          <div class="cat-item__actions">
+            <a class="btn btn--ghost btn--sm" href="feed-livestock-mineral-mixture.html">View details</a>
+            <a class="link" href="contact.html">Enquire</a>
+          </div>
         </div>
       </article>
         </div>
@@ -274,6 +353,13 @@
           <h3>No matches found</h3>
           <p>Try a different search term or clear the filters.</p>
         </div>
+        <nav class="pagination" aria-label="Animal feed pagination">
+          <a class="pagination__item pagination__item--prev is-disabled" href="#" aria-disabled="true" tabindex="-1">Previous</a>
+          <a class="pagination__item is-active" href="#" aria-current="page">1</a>
+          <a class="pagination__item" href="#">2</a>
+          <a class="pagination__item" href="#">3</a>
+          <a class="pagination__item pagination__item--next" href="#">Next</a>
+        </nav>
       </div>
     </section>
   </main>
@@ -340,6 +426,11 @@
         <a href="terms-and-conditions.html">Terms and Conditions</a>
         <a href="privacy-policy.html#image-credits">Image credits</a>
       </nav>
+      <nav class="footer-social" aria-label="Social media">
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+        <a href="https://wa.me/9779804331857" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+      </nav>
     </div>
   </div>
 </footer>
@@ -348,6 +439,8 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script src="assets/js/search-index.js" defer></script>
+<script src="assets/js/search-popup.js" defer></script>
 <script src="assets/js/navigation-static.js" defer></script>
   <script src="assets/js/filters-static.js" defer></script>
 <script src="assets/js/cookie.js" defer></script>

@@ -6,12 +6,31 @@
   display: grid;
   gap: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
   grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
 }
 
 .blog-card {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--s-4);
-  align-content: start;
+  height: 100%;
+}
+
+/* Body grows so the actions stay pinned to the bottom of every card. */
+.blog-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.55rem;
+}
+
+/* Category badge sits over the thumbnail, like the catalogue cards.
+   z-index keeps it above the image, which is transformed on hover. */
+.blog-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1;
 }
 
 .blog-card__media {
@@ -72,6 +91,19 @@
   line-height: 1.65;
   color: var(--c-text-muted);
   max-width: 62ch;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(3 * 1.65em);
+}
+
+.blog-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  align-items: center;
+  margin-top: auto;
 }
 
 /* Lead (first) card spans the full row with a wider image. */
@@ -96,14 +128,37 @@
 }
 
 .post-hero__media img {
+  display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 21 / 9;
-  object-fit: cover;
 }
 
-.post-body {
-  max-width: 72ch;
+.post-hero .lead {
+  margin-top: var(--s-3);
+}
+
+/* Meta and share sit in one row under the feature image. */
+.post-hero__media + .post-hero__foot {
+  margin-top: var(--s-5);
+}
+
+.post-hero__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3) var(--s-5);
+}
+
+.post-hero__foot .post-meta,
+.post-hero__foot .share {
+  margin: 0;
+}
+
+/* Wider reading column for the whole post (hero + body). Loaded after
+   typography.css, so it overrides .prose/.container--narrow max-widths. */
+.post-container {
+  max-width: 960px;
 }
 
 .post-body > * + * {

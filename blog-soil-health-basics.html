@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://example.com/blog-soil-health-basics.html">
   
   <meta name="twitter:card" content="summary">
-  <link rel="icon" type="image/png" href="assets/images/logo/logo.png">
+  <link rel="icon" type="image/png" href="assets/images/logo/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -71,8 +71,7 @@
       </ul>
     </nav>
     <div class="header-actions">
-      <a class="btn btn--ghost btn--sm" href="search.html" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></a>
-      <a class="btn btn--outline btn--sm header-whatsapp" href="https://wa.me/9779804331857" target="_blank" rel="noopener" data-wa-link>WhatsApp Enquiry</a>
+      <button class="btn btn--ghost btn--sm" type="button" aria-label="Search" data-search-open><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></button>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Open menu" data-open-label="Open menu" data-close-label="Close menu">
         <svg class="menu-toggle__open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         <svg class="menu-toggle__close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -110,13 +109,32 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="search.html">Search</a></li>
+        <li><button type="button" data-search-open>Search</button></li>
       </ul>
       <div class="mobile-drawer__actions">
         <a class="btn btn--primary" href="contact.html">Contact Us</a>
         <a class="btn btn--outline" href="https://wa.me/9779804331857" target="_blank" rel="noopener" data-wa-link>Chat on WhatsApp</a>
         <a class="mobile-drawer__phone" href="tel:+9779804331857">+977-980-433-1857</a>
       </div>
+    </div>
+  </div>
+
+  <div class="search-popup" id="search-popup" role="dialog" aria-modal="true" aria-labelledby="search-popup-title" hidden>
+    <div class="search-popup__backdrop" data-search-close></div>
+    <div class="search-popup__panel" role="document">
+      <div class="search-popup__head">
+        <h2 class="h-4" id="search-popup-title">Search the site</h2>
+        <button class="search-popup__close" type="button" aria-label="Close search" data-search-close>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <form class="search-popup__form" role="search" action="search.html" method="get">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input class="search-popup__input" type="search" name="q" id="search-popup-input" placeholder="Search livestock, feed, crops…" autocomplete="off" aria-label="Search the site">
+        <button class="btn btn--primary btn--sm" type="submit">Search</button>
+      </form>
+      <div class="search-popup__results" id="search-popup-results" aria-live="polite"></div>
+      <p class="search-popup__hint">Press Enter to see all results.</p>
     </div>
   </div>
 </header>
@@ -126,21 +144,30 @@
 
     <article>
       <header class="post-hero">
-        <div class="container container--narrow">
+        <div class="container post-container">
           <nav class="breadcrumbs" aria-label="Breadcrumb"><ol>
             <li><a href="index.html">Home</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><span aria-current="page">Soil Health Basics for Small Farms</span></li>
           </ol></nav>
-          <p class="post-meta"><span class="tag">Soil</span> 12 September 2026 · 5 min read</p>
-          <h1 class="section-title">Soil Health Basics for Small Farms</h1>
+          <h1>Soil Health Basics for Small Farms</h1>
           <p class="lead">Healthy soil grows healthy crops. Here is how to read, feed and protect the ground you farm.</p>
-          <figure class="post-hero__media frame frame--43"><img class="" src="assets/images/photos/field.jpg" srcset="assets/images/photos/field-card.jpg 480w, assets/images/photos/field.jpg 1200w" sizes="(max-width:767px)100vw,33vw" alt="Soil Health Basics for Small Farms" loading="lazy" decoding="async"></figure>
+          <figure class="post-hero__media"><img src="assets/images/photos/field.jpg" srcset="assets/images/photos/field-card.jpg 480w, assets/images/photos/field.jpg 1200w" sizes="(max-width:767px) calc(100vw - 2.5rem), 960px" alt="Soil Health Basics for Small Farms" loading="lazy" decoding="async"></figure>
+          <div class="post-hero__foot">
+            <p class="post-meta"><a class="tag" href="blog.html">Soil</a> By Yagya · 12 Sep 2026 · 5 min read</p>
+            <div class="share" aria-label="Share this article">
+              <span class="share__label">Share</span>
+              <a class="share__btn" href="#" data-share="facebook" aria-label="Share on Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+              <a class="share__btn" href="#" data-share="whatsapp" aria-label="Share on WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+              <a class="share__btn" href="#" data-share="linkedin" aria-label="Share on LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <button class="share__btn" type="button" data-share-copy aria-label="Copy link"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+            </div>
+          </div>
         </div>
       </header>
 
-      <div class="band">
-        <div class="container container--narrow prose post-body">
+      <div class="section">
+        <div class="container post-container prose post-body">
         <p>Soil is the single most valuable asset on a small farm. It holds water, feeds roots and stores the nutrients your crops depend on. Yet it is easy to exhaust: continuous cropping, bare fallows and heavy chemical use all burn through organic matter.</p>
         <p>Start with observation. Healthy soil crumbles in the hand, smells earthy, holds moisture without waterlogging and is full of visible life — earthworms, fine roots, fungal threads. If your soil sets hard after rain or runs to silt, it needs organic matter before it needs anything else.</p>
         <p>Feed the soil, not just the plant. Farmyard compost, well-rotted manure, green manure crops and crop residues all rebuild organic matter. Apply compost before the planting season and incorporate it lightly; deep inversion buries the biology you are trying to build.</p>
@@ -150,7 +177,7 @@
         <h2>Common questions</h2>
         <div class="accordion">
           <div class="accordion__item">
-            <h3 class="accordion__heading">
+            <h3>
               <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-trigger-1">
                 <span>How often should I add compost to my fields?</span><span class="accordion__icon" aria-hidden="true"></span>
               </button>
@@ -158,7 +185,7 @@
             <div class="accordion__panel" id="faq-panel-1" role="region" aria-labelledby="faq-trigger-1"><div><p>Once a year before planting is enough for most crops. Heavily cropped vegetable plots benefit from a light top-dress between seasons.</p></div></div>
           </div>
           <div class="accordion__item">
-            <h3 class="accordion__heading">
+            <h3>
               <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="faq-panel-2" id="faq-trigger-2">
                 <span>Can I improve soil without buying inputs?</span><span class="accordion__icon" aria-hidden="true"></span>
               </button>
@@ -169,16 +196,57 @@
         </div>
       </div>
 
-      <nav class="band band--offwhite post-nav" aria-label="Blog">
+      <section class="section" id="related-posts" aria-labelledby="related-posts-title">
         <div class="container">
-          <div class="section-head"><h2>More from the blog</h2></div>
-          <ul class="row-list">
-            <li class="row-list__item"><div class="row-list__body"><a class="link" href="blog-seasonal-feed-planning.html">Seasonal Feed Planning for Livestock</a><p>Plan roughage, concentrates and minerals by season so your animals never run short and you never overbuy.</p></div></li>
-            <li class="row-list__item"><div class="row-list__body"><a class="link" href="blog-rice-transplanting-tips.html">Rice Transplanting Tips for Better Yields</a><p>Nursery timing, seedling age, spacing and water management that lift paddy yields without extra cost.</p></div></li>
-            <li class="row-list__item"><div class="row-list__body"><a class="link" href="blog-preventing-livestock-disease.html">Preventing Common Livestock Diseases</a><p>Clean housing, clean water, isolation of new animals and a vaccination calendar prevent most disease losses.</p></div></li>
-          </ul>
+          <div class="related">
+            <header class="section-head"><div><h2 class="h-3" id="related-posts-title">Related posts</h2></div></header>
+            <div class="grid grid--3">
+              <article class="blog-card">
+                <a class="blog-card__media" href="blog-seasonal-feed-planning.html">
+                  <span class="blog-card__badge"><span class="badge">Animal feed</span></span>
+                  <img src="assets/images/photos/blog-feed.jpg" srcset="assets/images/photos/blog-feed-card.jpg 480w, assets/images/photos/blog-feed.jpg 1200w" sizes="(max-width:767px) 100vw, (max-width:1023px) 50vw, 33vw" alt="Seasonal Feed Planning for Livestock" loading="lazy" decoding="async">
+                </a>
+                <div class="blog-card__body">
+                  <p class="blog-card__meta">26 Sep 2026 · 4 min read</p>
+                  <h3 class="blog-card__title"><a class="link" href="blog-seasonal-feed-planning.html">Seasonal Feed Planning for Livestock</a></h3>
+                  <p class="blog-card__excerpt">Plan roughage, concentrates and minerals by season so your animals never run short and you never overbuy.</p>
+                  <div class="blog-card__actions">
+                    <a class="btn btn--ghost btn--sm" href="blog-seasonal-feed-planning.html">Read more</a>
+                  </div>
+                </div>
+              </article>
+              <article class="blog-card">
+                <a class="blog-card__media" href="blog-rice-transplanting-tips.html">
+                  <span class="blog-card__badge"><span class="badge">Crops</span></span>
+                  <img src="assets/images/photos/blog-rice.jpg" srcset="assets/images/photos/blog-rice-card.jpg 480w, assets/images/photos/blog-rice.jpg 1200w" sizes="(max-width:767px) 100vw, (max-width:1023px) 50vw, 33vw" alt="Rice Transplanting Tips for Better Yields" loading="lazy" decoding="async">
+                </a>
+                <div class="blog-card__body">
+                  <p class="blog-card__meta">2 Oct 2026 · 4 min read</p>
+                  <h3 class="blog-card__title"><a class="link" href="blog-rice-transplanting-tips.html">Rice Transplanting Tips for Better Yields</a></h3>
+                  <p class="blog-card__excerpt">Nursery timing, seedling age, spacing and water management that lift paddy yields without extra cost.</p>
+                  <div class="blog-card__actions">
+                    <a class="btn btn--ghost btn--sm" href="blog-rice-transplanting-tips.html">Read more</a>
+                  </div>
+                </div>
+              </article>
+              <article class="blog-card">
+                <a class="blog-card__media" href="blog-preventing-livestock-disease.html">
+                  <span class="blog-card__badge"><span class="badge">Livestock</span></span>
+                  <img src="assets/images/photos/livestock-goats.jpg" srcset="assets/images/photos/livestock-goats-card.jpg 480w, assets/images/photos/livestock-goats.jpg 1200w" sizes="(max-width:767px) 100vw, (max-width:1023px) 50vw, 33vw" alt="Preventing Common Livestock Diseases" loading="lazy" decoding="async">
+                </a>
+                <div class="blog-card__body">
+                  <p class="blog-card__meta">9 Oct 2026 · 5 min read</p>
+                  <h3 class="blog-card__title"><a class="link" href="blog-preventing-livestock-disease.html">Preventing Common Livestock Diseases</a></h3>
+                  <p class="blog-card__excerpt">Clean housing, clean water, isolation of new animals and a vaccination calendar prevent most disease losses.</p>
+                  <div class="blog-card__actions">
+                    <a class="btn btn--ghost btn--sm" href="blog-preventing-livestock-disease.html">Read more</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
-      </nav>
+      </section>
     </article>
   </main>
 <footer class="site-footer" id="site-footer">
@@ -244,6 +312,11 @@
         <a href="terms-and-conditions.html">Terms and Conditions</a>
         <a href="privacy-policy.html#image-credits">Image credits</a>
       </nav>
+      <nav class="footer-social" aria-label="Social media">
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+        <a href="https://wa.me/9779804331857" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+      </nav>
     </div>
   </div>
 </footer>
@@ -252,6 +325,9 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script src="assets/js/search-index.js" defer></script>
+<script src="assets/js/search-popup.js" defer></script>
+<script src="assets/js/share.js" defer></script>
 <script src="assets/js/navigation-static.js" defer></script>
   <script src="assets/js/accordion.js" defer></script>
 <script src="assets/js/cookie.js" defer></script>

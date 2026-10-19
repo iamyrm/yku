@@ -5,19 +5,28 @@
   var gallery = document.querySelector('[data-detail-gallery]');
   if (!gallery) return;
 
-  var mainWrap = gallery.querySelector('[data-gallery-main]');
-  var mainImg = mainWrap && mainWrap.querySelector('img');
+  var mainImg = gallery.querySelector('img[data-gallery-main]');
+  if (!mainImg) {
+    var wrap = gallery.querySelector('[data-gallery-main]');
+    if (wrap) mainImg = wrap.tagName === 'IMG' ? wrap : wrap.querySelector('img');
+  }
+  if (!mainImg) mainImg = gallery.querySelector('.detail-gallery__main img');
+
   var thumbs = gallery.querySelectorAll('[data-gallery-thumb]');
   if (!mainImg || !thumbs.length) return;
+
+  function swap(full, thumbImg) {
+    mainImg.removeAttribute('srcset');
+    mainImg.removeAttribute('sizes');
+    if (full) mainImg.src = full;
+    else if (thumbImg) mainImg.src = thumbImg.currentSrc || thumbImg.src;
+    if (thumbImg && thumbImg.alt) mainImg.alt = thumbImg.alt;
+  }
 
   function select(btn) {
     var full = btn.getAttribute('data-full');
     var img = btn.querySelector('img');
-    if (full) mainImg.src = full;
-    if (img) {
-      mainImg.alt = img.getAttribute('alt') || '';
-      if (!full) mainImg.src = img.currentSrc || img.src;
-    }
+    swap(full, img);
     for (var i = 0; i < thumbs.length; i++) {
       thumbs[i].setAttribute('aria-pressed', String(thumbs[i] === btn));
     }
